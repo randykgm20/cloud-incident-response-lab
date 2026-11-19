@@ -1,0 +1,67 @@
+{
+  "Records": [
+    {
+      "eventVersion": "1.09",
+      "userIdentity": {
+        "type": "IAMUser",
+        "arn": "arn:aws:iam::000000000000:user/lab-learner",
+        "accountId": "000000000000",
+        "userName": "lab-learner"
+      },
+      "eventTime": "2026-01-15T14:09:00Z",
+      "eventSource": "signin.amazonaws.com",
+      "eventName": "ConsoleLogin",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "198.51.100.23",
+      "recipientAccountId": "000000000000",
+      "eventID": "00000000-0000-4000-8000-000000000006",
+      "requestParameters": null,
+      "responseElements": {
+        "ConsoleLogin": "Failure"
+      },
+      "errorMessage": "Failed authentication"
+    },
+    {
+      "eventVersion": "1.09",
+      "userIdentity": {
+        "type": "IAMUser",
+        "arn": "arn:aws:iam::000000000000:user/lab-learner",
+        "accountId": "000000000000",
+        "userName": "lab-learner"
+      },
+      "eventTime": "2026-01-15T14:02:00Z",
+      "eventSource": "signin.amazonaws.com",
+      "eventName": "ConsoleLogin",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "198.51.100.23",
+      "recipientAccountId": "000000000000",
+      "eventID": "00000000-0000-4000-8000-000000000004",
+      "requestParameters": null,
+      "responseElements": {
+        "ConsoleLogin": "Failure"
+      },
+      "errorMessage": "Failed authentication"
+    },
+    {
+      "eventVersion": "1.09",
+      "userIdentity": {
+        "type": "IAMUser",
+        "arn": "arn:aws:iam::000000000000:user/lab-learner",
+        "accountId": "000000000000",
+        "userName": "lab-learner"
+      },
+      "eventTime": "2026-01-15T14:05:00Z",
+      "eventSource": "signin.amazonaws.com",
+      "eventName": "ConsoleLogin",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "198.51.100.23",
+      "recipientAccountId": "000000000000",
+      "eventID": "00000000-0000-4000-8000-000000000005",
+      "requestParameters": null,
+      "responseElements": {
+        "ConsoleLogin": "Failure"
+      },
+      "errorMessage": "Failed authentication"
+    }
+  ]
+}

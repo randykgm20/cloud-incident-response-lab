@@ -1,0 +1,25 @@
+{
+  "id": "unusual-source",
+  "title": "Activity from an unfamiliar source address",
+  "description": "The source address is absent from this lab's expected-source list. It may represent legitimate activity.",
+  "status": "experimental",
+  "logsource": {
+    "product": "aws",
+    "service": "cloudtrail"
+  },
+  "detection": {
+    "selection": {},
+    "condition": "unusual_source",
+    "parameters": {}
+  },
+  "level": "low",
+  "attack": null,
+  "falsepositives": [
+    "An approved remote connection or new egress address."
+  ],
+  "recommended_action": "Confirm expected network egress or remote access and review activity for the same identity.",
+  "notes": [
+    "Educational Sigma-style subset. See docs/rule-writing-guide.md.",
+    "Pattern match requires analyst validation. ATT&CK mapping uses the documented v17 reference snapshot."
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "id": "overly-permissive-policy",
+  "title": "Overly permissive IAM policy created",
+  "description": "The new policy contains an unconditional statement allowing every action on every resource. Review attachments and other controls to determine effective permissions.",
+  "status": "experimental",
+  "logsource": {
+    "product": "aws",
+    "service": "cloudtrail"
+  },
+  "detection": {
+    "selection": {
+      "eventSource": "iam.amazonaws.com",
+      "eventName": "CreatePolicy"
+    },
+    "condition": "unconditional_wildcard_policy",
+    "parameters": {}
+  },
+  "level": "high",
+  "attack": null,
+  "falsepositives": [
+    "Approved broad automation policy creation."
+  ],
+  "recommended_action": "Review the approval and policy attachments. Compare required permissions with the wildcard statement.",
+  "notes": [
+    "Educational Sigma-style subset. See docs/rule-writing-guide.md.",
+    "Pattern match requires analyst validation. ATT&CK mapping uses the documented v17 reference snapshot."
+  ]
+}

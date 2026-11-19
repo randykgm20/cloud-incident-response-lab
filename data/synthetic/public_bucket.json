@@ -1,0 +1,25 @@
+{
+  "Records": [
+    {
+      "eventVersion": "1.09",
+      "userIdentity": {
+        "type": "IAMUser",
+        "arn": "arn:aws:iam::000000000000:user/lab-operator",
+        "accountId": "000000000000",
+        "userName": "lab-operator"
+      },
+      "eventTime": "2026-01-15T14:13:00Z",
+      "eventSource": "s3.amazonaws.com",
+      "eventName": "PutBucketAcl",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "192.0.2.10",
+      "recipientAccountId": "000000000000",
+      "eventID": "00000000-0000-4000-8000-000000000010",
+      "requestParameters": {
+        "bucketName": "lab-demo-records",
+        "x-amz-acl": "public-read"
+      },
+      "responseElements": null
+    }
+  ]
+}

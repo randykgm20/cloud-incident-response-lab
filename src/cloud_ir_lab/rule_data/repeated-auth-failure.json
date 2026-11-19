@@ -1,0 +1,36 @@
+{
+  "id": "repeated-auth-failure",
+  "title": "Repeated console authentication failures",
+  "description": "Three failed sign-ins for this identity in ten minutes may indicate password guessing.",
+  "status": "experimental",
+  "logsource": {
+    "product": "aws",
+    "service": "cloudtrail"
+  },
+  "detection": {
+    "selection": {
+      "eventSource": "signin.amazonaws.com",
+      "eventName": "ConsoleLogin",
+      "responseElements.ConsoleLogin": "Failure"
+    },
+    "condition": "repeated_console_failures",
+    "parameters": {
+      "threshold": 3,
+      "window_minutes": 10
+    }
+  },
+  "level": "medium",
+  "attack": {
+    "technique_id": "T1110.001",
+    "technique": "Password Guessing",
+    "tactic": "Credential Access"
+  },
+  "falsepositives": [
+    "Password mistakes and stale credentials."
+  ],
+  "recommended_action": "Check the source addresses and nearby successful sign-ins. Confirm expected activity with the identity owner.",
+  "notes": [
+    "Educational Sigma-style subset. See docs/rule-writing-guide.md.",
+    "Pattern match requires analyst validation. ATT&CK mapping uses the documented v17 reference snapshot."
+  ]
+}

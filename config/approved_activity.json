@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "approvals": [
+    {
+      "rule_id": "unusual-source",
+      "identity": "arn:aws:iam::000000000000:user/lab-operator",
+      "source_ip": "203.0.113.77",
+      "reason": "Fictional change LAB-CHANGE-001 approved this user's test egress address."
+    }
+  ]
+}

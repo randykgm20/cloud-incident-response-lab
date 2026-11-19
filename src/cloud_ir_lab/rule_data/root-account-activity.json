@@ -1,0 +1,27 @@
+{
+  "id": "root-account-activity",
+  "title": "Root-account activity recorded",
+  "description": "A root identity appears in an event. Root privileges warrant review. Check the recorded outcome and whether this use was authorized.",
+  "detection": {
+    "selection": {
+      "userIdentity.type": "Root"
+    },
+    "condition": "root_activity",
+    "parameters": {}
+  },
+  "falsepositives": [
+    "Approved account recovery or a task requiring root access."
+  ],
+  "recommended_action": "Confirm the operator and approved task. Review authentication details, the event outcome, and nearby root events.",
+  "attack": null,
+  "status": "experimental",
+  "logsource": {
+    "product": "aws",
+    "service": "cloudtrail"
+  },
+  "level": "high",
+  "notes": [
+    "Educational Sigma-style subset. A finding is an investigation lead.",
+    "Uses the existing ATT&CK v17 reference snapshot where mapped."
+  ]
+}

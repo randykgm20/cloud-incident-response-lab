@@ -1,0 +1,31 @@
+{
+  "id": "public-bucket-permissions",
+  "title": "S3 bucket permission may allow public access",
+  "description": "The event applied a broadly shared access setting. Other controls may affect actual exposure.",
+  "status": "experimental",
+  "logsource": {
+    "product": "aws",
+    "service": "cloudtrail"
+  },
+  "detection": {
+    "selection": {
+      "eventSource": "s3.amazonaws.com",
+      "eventName": [
+        "PutBucketAcl",
+        "PutBucketPolicy"
+      ]
+    },
+    "condition": "public_bucket_permissions",
+    "parameters": {}
+  },
+  "level": "high",
+  "attack": null,
+  "falsepositives": [
+    "Approved public content; overriding controls may prevent access."
+  ],
+  "recommended_action": "Verify ownership, Block Public Access, effective permissions, and available access logs for this bucket.",
+  "notes": [
+    "Educational Sigma-style subset. See docs/rule-writing-guide.md.",
+    "Pattern match requires analyst validation. ATT&CK mapping uses the documented v17 reference snapshot."
+  ]
+}

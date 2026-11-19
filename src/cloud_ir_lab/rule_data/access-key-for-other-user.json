@@ -1,0 +1,33 @@
+{
+  "id": "access-key-for-other-user",
+  "title": "Access key created for another IAM user",
+  "description": "An IAM user requested a new access key for a different named user without a recorded error. This may create another route to that user's permissions.",
+  "detection": {
+    "selection": {
+      "eventSource": "iam.amazonaws.com",
+      "eventName": "CreateAccessKey",
+      "userIdentity.type": "IAMUser"
+    },
+    "condition": "cross_user_access_key",
+    "parameters": {}
+  },
+  "falsepositives": [
+    "An approved administrator rotating a service user's key."
+  ],
+  "recommended_action": "Check the rotation approval, target user's permissions, and subsequent activity. Preserve evidence and consult the response process before changing credentials.",
+  "attack": {
+    "technique_id": "T1098.001",
+    "technique": "Additional Cloud Credentials",
+    "tactic": "Persistence / Privilege Escalation"
+  },
+  "status": "experimental",
+  "logsource": {
+    "product": "aws",
+    "service": "cloudtrail"
+  },
+  "level": "high",
+  "notes": [
+    "Educational Sigma-style subset. A finding is an investigation lead.",
+    "Uses the existing ATT&CK v17 reference snapshot where mapped."
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "id": "cloudtrail-disabled",
+  "title": "CloudTrail logging stopped or trail deleted",
+  "description": "The event indicates that recording was stopped or the trail was deleted. Review coverage to determine whether an audit gap followed.",
+  "status": "experimental",
+  "logsource": {
+    "product": "aws",
+    "service": "cloudtrail"
+  },
+  "detection": {
+    "selection": {
+      "eventSource": "cloudtrail.amazonaws.com",
+      "eventName": [
+        "StopLogging",
+        "DeleteTrail"
+      ]
+    },
+    "condition": "logging_disabled",
+    "parameters": {}
+  },
+  "level": "high",
+  "attack": {
+    "technique_id": "T1562.008",
+    "technique": "Disable or Modify Cloud Logs",
+    "tactic": "Defense Evasion"
+  },
+  "falsepositives": [
+    "Approved retirement or migration of a trail."
+  ],
+  "recommended_action": "Check the change window, delivery status, alternative trails, and the last available event for this trail.",
+  "notes": [
+    "Educational Sigma-style subset. See docs/rule-writing-guide.md.",
+    "Pattern match requires analyst validation. ATT&CK mapping uses the documented v17 reference snapshot."
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "Records": [
+    {
+      "eventVersion": "1.09",
+      "userIdentity": {
+        "type": "IAMUser",
+        "arn": "arn:aws:iam::000000000000:user/lab-operator",
+        "accountId": "000000000000",
+        "userName": "lab-operator"
+      },
+      "eventTime": "2026-01-15T15:02:00Z",
+      "eventSource": "iam.amazonaws.com",
+      "eventName": "CreateAccessKey",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "192.0.2.10",
+      "recipientAccountId": "000000000000",
+      "eventID": "lab-normal-key-001",
+      "requestParameters": {
+        "userName": "LAB-OPERATOR"
+      },
+      "responseElements": null
+    },
+    {
+      "eventVersion": "1.09",
+      "userIdentity": {
+        "type": "IAMUser",
+        "arn": "arn:aws:iam::000000000000:user/lab-operator",
+        "accountId": "000000000000",
+        "userName": "lab-operator"
+      },
+      "eventTime": "2026-01-15T15:03:00Z",
+      "eventSource": "s3.amazonaws.com",
+      "eventName": "ListBuckets",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "192.0.2.10",
+      "recipientAccountId": "000000000000",
+      "eventID": "lab-normal-list-001",
+      "requestParameters": null,
+      "responseElements": null
+    }
+  ]
+}

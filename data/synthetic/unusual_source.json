@@ -1,0 +1,22 @@
+{
+  "Records": [
+    {
+      "eventVersion": "1.09",
+      "userIdentity": {
+        "type": "IAMUser",
+        "arn": "arn:aws:iam::000000000000:user/lab-operator",
+        "accountId": "000000000000",
+        "userName": "lab-operator"
+      },
+      "eventTime": "2026-01-15T14:14:00Z",
+      "eventSource": "s3.amazonaws.com",
+      "eventName": "ListBuckets",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "203.0.113.77",
+      "recipientAccountId": "000000000000",
+      "eventID": "00000000-0000-4000-8000-000000000011",
+      "requestParameters": null,
+      "responseElements": null
+    }
+  ]
+}

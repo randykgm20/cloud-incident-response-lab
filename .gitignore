@@ -1,0 +1,45 @@
+# Local environments and development caches
+.venv/
+venv/
+env/
+.wheelhouse/
+.tmp/
+.pytest-tmp/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+*.egg-info/
+build/
+dist/
+
+# Local configuration, credentials, and key material
+.env
+.env.*
+.envrc
+.aws/
+.secrets/
+secrets/
+credentials/
+credentials
+credentials.*
+*secret*.json
+*secret*.yml
+*secret*.yaml
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+
+# Logs, exported evidence, and generated reports
+*.log
+*.log.*
+logs/
+reports/
+.report-*/
+findings.json
+incident-report.md

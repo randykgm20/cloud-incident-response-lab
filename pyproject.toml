@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cloud-incident-response-lab"
+version = "0.1.0"
+description = "Local defensive detection lab for synthetic CloudTrail-style logs"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.optional-dependencies]
+test = ["pytest>=8,<10"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+cloud_ir_lab = ["rule_data/*.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

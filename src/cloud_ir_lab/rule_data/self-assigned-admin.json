@@ -1,0 +1,32 @@
+{
+  "id": "self-assigned-admin",
+  "title": "Identity attached an administrator policy to itself",
+  "description": "An IAM user attached the managed AdministratorAccess policy to its own username. This can increase the user's permissions.",
+  "status": "experimental",
+  "logsource": {
+    "product": "aws",
+    "service": "cloudtrail"
+  },
+  "detection": {
+    "selection": {
+      "eventSource": "iam.amazonaws.com",
+      "eventName": "AttachUserPolicy"
+    },
+    "condition": "self_assigned_admin",
+    "parameters": {}
+  },
+  "level": "high",
+  "attack": {
+    "technique_id": "T1098.003",
+    "technique": "Additional Cloud Roles",
+    "tactic": "Persistence / Privilege Escalation"
+  },
+  "falsepositives": [
+    "Approved emergency access or initial setup."
+  ],
+  "recommended_action": "Verify the change request and review the identity's prior permissions and subsequent privileged activity.",
+  "notes": [
+    "Educational Sigma-style subset. See docs/rule-writing-guide.md.",
+    "Pattern match requires analyst validation. ATT&CK mapping uses the documented v17 reference snapshot."
+  ]
+}

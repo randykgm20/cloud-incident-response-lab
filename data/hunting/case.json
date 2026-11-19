@@ -1,0 +1,214 @@
+{
+  "Records": [
+    {
+      "eventVersion": "1.09",
+      "userIdentity": {
+        "type": "IAMUser",
+        "arn": "arn:aws:iam::000000000000:user/lab-operator",
+        "accountId": "000000000000",
+        "userName": "lab-operator"
+      },
+      "eventTime": "2026-01-15T09:11:00Z",
+      "eventSource": "iam.amazonaws.com",
+      "eventName": "CreateAccessKey",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "192.0.2.10",
+      "recipientAccountId": "000000000000",
+      "eventID": "hunt-09",
+      "requestParameters": {
+        "userName": "lab-operator"
+      },
+      "responseElements": null
+    },
+    {
+      "eventVersion": "1.09",
+      "userIdentity": {
+        "type": "IAMUser",
+        "arn": "arn:aws:iam::000000000000:user/lab-operator",
+        "accountId": "000000000000",
+        "userName": "lab-operator"
+      },
+      "eventTime": "2026-01-15T09:10:00Z",
+      "eventSource": "s3.amazonaws.com",
+      "eventName": "ListBuckets",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "198.51.100.23",
+      "recipientAccountId": "000000000000",
+      "eventID": "hunt-08",
+      "requestParameters": null,
+      "responseElements": null
+    },
+    {
+      "eventVersion": "1.09",
+      "userIdentity": {
+        "type": "IAMUser",
+        "arn": "arn:aws:iam::000000000000:user/lab-investigator",
+        "userName": "lab-investigator"
+      },
+      "eventTime": "2026-01-15T09:09:00Z",
+      "eventSource": "cloudtrail.amazonaws.com",
+      "eventName": "DeleteTrail",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "203.0.113.88",
+      "recipientAccountId": "000000000000",
+      "eventID": "hunt-07",
+      "requestParameters": {
+        "name": "lab-hunt-trail"
+      },
+      "responseElements": null,
+      "errorCode": "AccessDenied"
+    },
+    {
+      "eventVersion": "1.09",
+      "userIdentity": {
+        "type": "IAMUser",
+        "arn": "arn:aws:iam::000000000000:user/lab-investigator",
+        "userName": "lab-investigator"
+      },
+      "eventTime": "2026-01-15T09:08:00Z",
+      "eventSource": "cloudtrail.amazonaws.com",
+      "eventName": "StopLogging",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "203.0.113.88",
+      "recipientAccountId": "000000000000",
+      "eventID": "hunt-06",
+      "requestParameters": {
+        "name": "lab-hunt-trail"
+      },
+      "responseElements": null
+    },
+    {
+      "eventVersion": "1.09",
+      "userIdentity": {
+        "type": "IAMUser",
+        "arn": "arn:aws:iam::000000000000:user/lab-investigator",
+        "userName": "lab-investigator"
+      },
+      "eventTime": "2026-01-15T09:07:00Z",
+      "eventSource": "iam.amazonaws.com",
+      "eventName": "AttachUserPolicy",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "203.0.113.88",
+      "recipientAccountId": "000000000000",
+      "eventID": "hunt-05",
+      "requestParameters": {
+        "userName": "lab-investigator",
+        "policyArn": "arn:aws:iam::aws:policy/AdministratorAccess"
+      },
+      "responseElements": null
+    },
+    {
+      "eventVersion": "1.09",
+      "userIdentity": {
+        "type": "IAMUser",
+        "arn": "arn:aws:iam::000000000000:user/lab-investigator",
+        "userName": "lab-investigator"
+      },
+      "eventTime": "2026-01-15T09:06:00Z",
+      "eventSource": "signin.amazonaws.com",
+      "eventName": "ConsoleLogin",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "203.0.113.88",
+      "recipientAccountId": "000000000000",
+      "eventID": "hunt-04",
+      "requestParameters": null,
+      "responseElements": {
+        "ConsoleLogin": "Success"
+      }
+    },
+    {
+      "eventVersion": "1.09",
+      "userIdentity": {
+        "type": "IAMUser",
+        "arn": "arn:aws:iam::000000000000:user/lab-investigator",
+        "userName": "lab-investigator"
+      },
+      "eventTime": "2026-01-15T09:05:00Z",
+      "eventSource": "signin.amazonaws.com",
+      "eventName": "ConsoleLogin",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "203.0.113.88",
+      "recipientAccountId": "000000000000",
+      "eventID": "hunt-03",
+      "requestParameters": null,
+      "responseElements": {
+        "ConsoleLogin": "Failure"
+      }
+    },
+    {
+      "eventVersion": "1.09",
+      "userIdentity": {
+        "type": "IAMUser",
+        "arn": "arn:aws:iam::000000000000:user/lab-investigator",
+        "userName": "lab-investigator"
+      },
+      "eventTime": "2026-01-15T09:03:00Z",
+      "eventSource": "signin.amazonaws.com",
+      "eventName": "ConsoleLogin",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "203.0.113.88",
+      "recipientAccountId": "000000000000",
+      "eventID": "hunt-02",
+      "requestParameters": null,
+      "responseElements": {
+        "ConsoleLogin": "Failure"
+      }
+    },
+    {
+      "eventVersion": "1.09",
+      "userIdentity": {
+        "type": "IAMUser",
+        "arn": "arn:aws:iam::000000000000:user/lab-investigator",
+        "userName": "lab-investigator"
+      },
+      "eventTime": "2026-01-15T09:01:00Z",
+      "eventSource": "signin.amazonaws.com",
+      "eventName": "ConsoleLogin",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "203.0.113.88",
+      "recipientAccountId": "000000000000",
+      "eventID": "hunt-01",
+      "requestParameters": null,
+      "responseElements": {
+        "ConsoleLogin": "Failure"
+      }
+    },
+    {
+      "eventVersion": "1.09",
+      "userIdentity": {
+        "type": "IAMUser",
+        "arn": "arn:aws:iam::000000000000:user/lab-operator",
+        "accountId": "000000000000",
+        "userName": "lab-operator"
+      },
+      "eventTime": "2026-01-15T09:00:00Z",
+      "eventSource": "s3.amazonaws.com",
+      "eventName": "ListBuckets",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "192.0.2.10",
+      "recipientAccountId": "000000000000",
+      "eventID": "hunt-00",
+      "requestParameters": null,
+      "responseElements": null
+    },
+    {
+      "eventVersion": "1.09",
+      "userIdentity": {
+        "type": "IAMUser",
+        "arn": "arn:aws:iam::000000000000:user/lab-investigator",
+        "userName": "lab-investigator"
+      },
+      "eventTime": "2026-01-15T09:03:00Z",
+      "eventSource": "signin.amazonaws.com",
+      "eventName": "ConsoleLogin",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "203.0.113.88",
+      "recipientAccountId": "000000000000",
+      "eventID": "hunt-02",
+      "requestParameters": null,
+      "responseElements": {
+        "ConsoleLogin": "Failure"
+      }
+    }
+  ]
+}
