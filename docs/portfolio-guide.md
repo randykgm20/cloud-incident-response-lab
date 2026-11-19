@@ -77,14 +77,14 @@ The tuning commands analyze the same file with and without an approval. The last
 
 ## Git review and commit checklist
 
-Git records reviewed local file versions. This repository currently has no commits and no remote. Original intent-to-add entries make those files visible in working diffs.
+Git records reviewed local file versions. Use this checklist when preparing a new commit in the repository.
 
 1. Run the tests and review the measured results in résumé evidence.
 2. Use `git status --short` to list files and `git diff` to review existing entries. Read newly created rules, tests, config, datasets, and guides too.
 3. Run `git diff --check`. Confirm private files, generated reports, caches, and environments are excluded.
 4. After approving the content, stage the named deliverables below.
 5. Read the staged diff, which is the content intended for the commit.
-6. If correct, use the suggested initial commit command.
+6. If correct, commit the reviewed changes with a message that describes them.
 
 These commands stage only the named project deliverables, then display their summary and full contents.
 
@@ -97,7 +97,7 @@ git diff --cached
 This command records the reviewed local version after your approval.
 
 ```powershell
-git commit -m "feat: complete local cloud detection engineering portfolio"
+git commit -m "docs: prepare portfolio for publication"
 ```
 
 ## Three future improvements

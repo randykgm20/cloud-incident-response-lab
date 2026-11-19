@@ -4,6 +4,12 @@ A finished educational Python project for local analysis of synthetic Amazon Web
 
 The project demonstrates Python programming, Identity and Access Management (IAM), detection engineering, detection-as-code, false-positive tuning, and basic incident investigation. Detection engineering means designing and testing ways to recognize security-relevant patterns. Detection-as-code stores reviewable rules beside their tests and documentation.
 
+## Demo at a glance
+
+On the same three synthetic events, tuning changed **4 active findings** into **2 active findings and 2 documented suppressions**. The stopped-logging finding and another user's unfamiliar-source finding stayed active. Suppressed findings retain their original evidence and approval reason.
+
+This helps an analyst reduce noise from approved activity while keeping other suspicious activity visible. Run the [tuning comparison commands](docs/tuning-guide.md#run-the-controlled-comparison) to reproduce the demonstration.
+
 ## Scope and safety
 
 The supported workflow is local, in-memory batch analysis of fictional data. Live AWS monitoring, automatic incident containment, deployment, credential handling, and production security operations sit outside its capabilities. A production Security Information and Event Management (SIEM) or cloud-security platform provides collection, scale, access control, and operational safeguards beyond this lab. Keep inputs fictional and all reports local. The application cannot establish whether an arbitrary file is synthetic.
@@ -23,34 +29,45 @@ JavaScript Object Notation (JSON) uses named fields to represent data. Markdown 
 
 ## Installation
 
-Python 3.11 or newer is required. Run commands from this repository's root folder, which contains `pyproject.toml`. The supplied local folder has a prepared `.venv` virtual environment, an isolated Python installation for this project. The following command checks its version.
+Install Python **3.11 or newer**. After cloning the repository, open Windows PowerShell in its root folder, which contains `pyproject.toml`. Check that the version printed by the first command is at least 3.11 before continuing.
+
+The `py` command selects Python on Windows. `-m venv .venv` creates an isolated environment for this project. The remaining commands use that environment's interpreter directly, install the local package, and check its installed dependencies. `pip` is Python's package installer, and `-e` makes source edits available on the next run.
 
 ```powershell
-.\.venv\Scripts\python.exe --version
+py -3 --version
+py -3 -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -e .
+.\.venv\Scripts\python.exe -m pip check
 ```
 
-### Fresh offline setup
-
-The Windows commands below use Codex's bundled Python when it is available. `Join-Path` builds a filesystem path and `&` runs the executable stored in a variable. `-m venv` creates the isolated environment. Use these creation commands for a fresh checkout. For another machine, set `$LabPython` to the path of an approved local Python 3.11+ executable.
+Running the lab uses Python's standard library. Package installation uses `setuptools>=64` as a build dependency. Automated tests additionally require the optional `test` extra declared in `pyproject.toml`, which installs `pytest>=8,<10` and its dependencies. Install that extra before running the tests.
 
 ```powershell
-$LabPython = Join-Path $env:USERPROFILE ".cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe"
-& $LabPython --version
-& $LabPython -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -e ".[test]"
 ```
 
-An offline install needs approved local Python packages called wheels in `.wheelhouse/`. This delivered workspace contains cached wheels. A Git checkout excludes them. For an offline copy, transfer the approved wheel files separately. The verified set contains setuptools 81.0.0, pytest 9.0.3, colorama 0.4.6, iniconfig 2.3.1, packaging 26.3, pluggy 1.7.0, and pygments 2.21.0. The runtime uses only Python's standard library. pytest is the development test runner.
+Expect `No broken requirements found` from `pip check`. The standard installation can download dependencies from the configured package index. On macOS/Linux, use `python3 --version` and `python3 -m venv .venv`, confirming Python 3.11 or newer. Use `.venv/bin/python` for all later commands, including `.venv/bin/python -m pip install -e ".[test]"` for tests.
 
-The next commands disable package-index access, resolve the wheel folder to an absolute path, and install the project with its test dependencies. `-e` makes source edits available on the next run. `[test]` selects the testing dependency group.
+### Optional offline installation
+
+Wheel files are packaged Python dependencies. Supply approved, compatible wheels separately in `.wheelhouse/` at the repository root. **Wheel files and virtual environments are excluded from a Git clone.** The offline wheel set needs `setuptools>=64` for installation. Testing also needs `pytest>=8,<10` and its dependencies, including any required by your Python version and operating system.
+
+Create the environment with the first two setup commands above, then run the offline commands below. `PIP_NO_INDEX` disables package-index access for this PowerShell session and build subprocesses. `--find-links` points the installer at the local wheel folder.
 
 ```powershell
 $env:PIP_NO_INDEX = "1"
 $LabWheels = (Resolve-Path .wheelhouse).Path
-.\.venv\Scripts\python.exe -m pip install --no-index --find-links $LabWheels -e ".[test]"
+.\.venv\Scripts\python.exe -m pip install --no-index --find-links $LabWheels -e .
 .\.venv\Scripts\python.exe -m pip check
 ```
 
-Expect a successful installation and `No broken requirements found`. On Linux or macOS, create the environment with an approved `python3.11 -m venv .venv`, set `PIP_NO_INDEX=1` in the shell, and use `.venv/bin/python`.
+For offline testing, install the test extra from the same wheel folder.
+
+```powershell
+.\.venv\Scripts\python.exe -m pip install --no-index --find-links $LabWheels -e ".[test]"
+```
+
+On macOS/Linux, set `export PIP_NO_INDEX=1`, use `.venv/bin/python`, and pass the absolute wheel-folder path to `--find-links`.
 
 ## Run the detector
 
@@ -101,7 +118,7 @@ Use `--rules-dir` to supply a validated rule folder. The existing `--known-sourc
 
 ## Tests and investigation
 
-The next command runs every automated test. `-q` gives a short summary. `--basetemp` keeps disposable test files inside `.pytest-tmp` and clears that folder between runs.
+After installing the `test` extra from the installation section, the next command runs every automated test. `-q` gives a short summary. `--basetemp` keeps disposable test files inside `.pytest-tmp` and clears that folder between runs.
 
 ```powershell
 .\.venv\Scripts\python.exe -m pytest -q --basetemp .pytest-tmp
@@ -123,12 +140,4 @@ The next useful improvements are deeper IAM policy semantics, measured rule tuni
 
 ## Review and commit
 
-Git tracks reviewed versions of files. `git status` lists changes, `git diff` shows working changes, and `git diff --check` checks whitespace. New files appear in status and can be read directly. Files already marked with intent-to-add also appear in diff. Use this review before staging.
-
-```powershell
-git status --short
-git diff --check
-git diff
-```
-
-After reviewing synthetic inputs, rule changes, tests, and ignore protections, stage only the intended files with `git add`. `git diff --cached` shows staged content before a commit. The current repository has no commits, so the first approved commit will capture the whole local project. See [the handoff checklist](docs/portfolio-guide.md#git-review-and-commit-checklist). License terms are in [LICENSE](LICENSE).
+Use the existing [handoff checklist](docs/portfolio-guide.md#git-review-and-commit-checklist) to review changes before staging or committing. License terms are in [LICENSE](LICENSE).
